@@ -606,6 +606,10 @@ Rcpp::List changeQuery(int                  v,       // 0-based node index
                 }
             }
         }
+
+        // output a message about v & updated clusters
+        Rcpp::Rcout << "The updated cluster still contains the chosen node \n";
+        
     }
     else  // decrease size (OR increase TDP) of the cluster
     {
@@ -622,6 +626,16 @@ Rcpp::List changeQuery(int                  v,       // 0-based node index
                     MARK[DESC[j]] = 2;
                 }
             }
+        }
+        
+        // output a message about v & updated clusters
+        if (MARK[v] > 1)
+        {
+            Rcpp::Rcout << "The updated cluster still contains the chosen node \n";
+        }
+        else
+        {
+            Rcpp::Rcout << "The chosen node is not inside the output clusters \n";
         }
         
         // append remaining clusters to CHG

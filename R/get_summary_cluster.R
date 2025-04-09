@@ -17,7 +17,7 @@ summary_cluster <- function(coord_and_values, summary_stat=c("max", "center-of-m
   summary_stat = match.arg(summary_stat, c("max", "center-of-mass"))
   out = list(Size=nrow(coord_and_values))
   if (summary_stat=="max") {
-    id_max = which.max(coord_and_values[,4])
+    id_max = which.max(abs(coord_and_values[,4]))
     out = c(out, coord_and_values[id_max,])
   } else if (summary_stat=="center-of-mass") {
     id_mean = colMeans(coord_and_values[, -1, drop=FALSE])
